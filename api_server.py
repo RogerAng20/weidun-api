@@ -2,6 +2,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
+from fastapi import FastAPI
+
+app = FastAPI(title="Weidun API", version="1.0")
+
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "service": "weidun-api",
+        "docs": "/docs"
+    }
 
 app = FastAPI(title="Weidun API", version="1.0.0")
 
@@ -32,3 +43,4 @@ def live_data(site: str = "A"):
         "eday": 1327.6,
         "time": datetime.now().strftime("%H:%M")
     }
+
